@@ -1,0 +1,36 @@
+services:
+  database:
+    image: mysql:8
+    container_name: mysql_database
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: studentdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    build: ./backend
+    container_name: backend_api
+    restart: always
+    ports:
+      - "5000:5000"
+    depends_on:
+      - database
+      - python-service
+
+  python-service:
+    build: ./python-service
+    container_name: python_service
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./frontend
+    container_name: frontend_app
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
