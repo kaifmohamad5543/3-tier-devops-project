@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Performance System</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Student Performance System</h1>
+    <p>3-Tier DevOps Project: HTML, CSS, JavaScript + Node.js + Python + MySQL</p>
+
+    <div class="card">
+      <h2>Add Student</h2>
+
+      <input type="text" id="name" placeholder="Student Name" />
+      <input type="email" id="email" placeholder="Student Email" />
+      <input type="text" id="course" placeholder="Course Name" />
+      <input type="number" id="marks" placeholder="Marks" />
+
+      <button onclick="addStudent()">Add Student</button>
+    </div>
+
+    <div class="card">
+      <h2>Student List</h2>
+      <button onclick="loadStudents()">Load Students</button>
+
+      <div id="studentList">
+        <p>No students loaded yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
