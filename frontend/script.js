@@ -1,4 +1,4 @@
-const API_URL = "http://54.160.185.209:5000";
+const API_URL = "http://54.167.44.161:5000";
 function addStudent() {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
