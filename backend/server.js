@@ -27,6 +27,16 @@ app.get("/", (req, res) => {
   res.send("🚀 Backend is running");
 });
 
+// Health check API added by Pradeep
+app.get("/health", (req, res) => {
+  res.json({
+    status: "Backend API is healthy",
+    service: "Node.js Backend",
+    database: "MySQL",
+    port: 5000
+  });
+});
+
 app.get("/students", (req, res) => {
   db.query("SELECT * FROM students", (err, results) => {
     if (err) {
@@ -43,6 +53,12 @@ app.get("/students", (req, res) => {
 app.post("/students", async (req, res) => {
   try {
     const { name, email, course, marks } = req.body;
+
+    if (!name || !email || !course || marks === undefined) {
+      return res.status(400).json({
+        message: "All fields are required"
+      });
+    }
 
     const pythonRes = await axios.post("http://python-service:8000/analyze", {
       marks
@@ -62,6 +78,8 @@ app.post("/students", async (req, res) => {
           error: err
         });
       }
+
+      console.log(`✅ Student added: ${name}`);
 
       res.json({
         message: "Student added successfully",
