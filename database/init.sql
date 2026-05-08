@@ -12,3 +12,5 @@ CREATE TABLE IF NOT EXISTS students (
   status VARCHAR(50),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+INSERT INTO students (name, email, course, marks, grade, status)
+VALUES ('Sonam', 'sonam@test.com', 'DevOps', 82, 'Distinction', 'Passed');
