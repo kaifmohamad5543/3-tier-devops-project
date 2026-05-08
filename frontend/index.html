@@ -3,35 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Student Performance System</title>
+  <title>Student Management System</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
-<body>
+
+<body onload="loadStudents()">
   <div class="container">
-    <h1> update by adarsh</h1>
-    <h1>Student Performance System</h1>
-    <p>3-Tier DevOps Project: HTML, CSS, JavaScript + Node.js + Python + MySQL</p>
+    <h1>Student Management System</h1>
+    <p>3-Tier DevOps Web Application</p>
 
-    <div class="card">
-      <h2>Add Student</h2>
+    <div class="form-box">
+      <input type="hidden" id="studentId" />
 
-      <input type="text" id="name" placeholder="Student Name" />
-      <input type="email" id="email" placeholder="Student Email" />
-      <input type="text" id="course" placeholder="Course Name" />
-      <input type="number" id="marks" placeholder="Marks" />
+      <input type="text" id="name" placeholder="Enter Student Name" />
+      <input type="email" id="email" placeholder="Enter Email Address" />
+      <input type="text" id="course" placeholder="Enter Course Name" />
+      <input type="number" id="marks" placeholder="Enter Marks" />
 
-      <button onclick="addStudent()">Add Student</button>
+      <button id="submitBtn" onclick="addOrUpdateStudent()">Add Student</button>
+      <button onclick="clearForm()">Clear</button>
     </div>
 
-    <div class="card">
-      <h2>Student List</h2>
-      <button onclick="loadStudents()">Load Students</button>
+    <h2>Student Details</h2>
 
-      <div id="studentList">
-        <p>No students loaded yet.</p>
-      </div>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Course</th>
+          <th>Marks</th>
+          <th>Grade</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody id="studentTable">
+        <!-- Student data will load here -->
+      </tbody>
+    </table>
   </div>
 
   <script src="script.js"></script>
